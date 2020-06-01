@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jim's Blog</title>
+    <link href="{% static "css/base.css" %}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caladea&display=swap" rel="stylesheet">
+</head>
+<body>
+<div>
+    <header>
+    <div class="nav-left">
+        <h1>
+        <a href="{% url "home" %}">Jim's Blog</a>
+        </h1>
+    </div>
+    <div class="nav-right">
+        <a href="{% url "post_new" %}">+New Post</a>
+    </div>
+</header>
+    {% if user.is_authenticated %}
+
+        <div class="welcome-note">
+        <p>Hi {{ user.username }}!</p>
+        </div>
+        <p><a href="{% url 'logout' %}">Logout</a> </p>
+
+    {% else %}
+        <div class="welcome-note">
+        <p>You are not logged in. </p>
+        </div>
+
+        <a href="{% url 'login' %}">Login</a>
+
+    {% endif %}
+
+</div>
+<div>
+    {% block content %}
+
+    {% endblock content %}
+</div>
+
+</body>
+</html>
