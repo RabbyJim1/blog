@@ -18,7 +18,7 @@ class BlogTest(TestCase):
             body='It is the body',
             author=self.user,
         )
-        
+
     # added some test comment
 
     def test_string_representation(self):
